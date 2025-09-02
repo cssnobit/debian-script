@@ -1,0 +1,33 @@
+#!/bin/bash\
+
+
+echo "Initialize script is running! Becoming root user"
+su -
+echo "Root with success"
+sleep 5s
+
+# Updating the system
+clear
+echo "Updating and upgrading the system"
+apt update -y && apt upgrade -y
+echo "Done!"
+sleep 5s
+
+# Installing sudo
+clear
+echo "Installing sudo"
+apt install sudo -y
+echo "Done!"
+sleep 5s
+
+# Adding user's machine as sudo
+clear
+echo "Setting up sudo to user"
+adduser $1 sudo
+echo "Done!"
+sleep 5s
+
+# Restarting the machine
+clear
+echo "Restarting your computer..."
+systemctl reboot

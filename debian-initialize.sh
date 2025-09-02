@@ -10,6 +10,11 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+if ! id "$1" >/dev/null 2>&1; then
+	echo -e "${RED}It was not possible run the script! There's no user in your system with that username${NC}"
+	exit 1
+fi
+
 if [ "$(id -u)" -ne 0 ]; then
 	echo -e "${RED}Please, run this script as root user!${NC}"
 	exit 1
